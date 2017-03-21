@@ -255,9 +255,9 @@
                         var cell    = $(row).find("> *:nth-child(" + nth + ")");
                         var colspan = cell.prop("colspan");
                         
-                        if (colspan) {
-                            return;   
-                        }
+//                         if (colspan) {
+//                             return;   
+//                         }
 
                         if (cell.cellPos().left < fixColumn) {
                             action(cell);
@@ -277,9 +277,9 @@
                         var cell    = $(row).find("> *:nth-last-child(" + nth + ")");
                         var colspan = cell.prop("colspan");
                         
-                        if (colspan) {
-                            return;   
-                        }
+//                         if (colspan) {
+//                             return;   
+//                         }
 
                         action(cell);
 
