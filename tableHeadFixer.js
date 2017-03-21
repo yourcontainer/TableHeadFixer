@@ -246,26 +246,17 @@
                 }
 
                 function solverLeftColspan(row, action) {
-                    var fixColumn = settings.left;
-                    var inc       = 1;
-
-                    for (var i = 1; i <= fixColumn; i = i + inc) {
-                        var nth = inc > 1 ? i - 1 : i;
-
-                        var cell    = $(row).find("> *:nth-child(" + nth + ")");
-                        var colspan = cell.prop("colspan");
-                        
-//                         if (colspan) {
-//                             return;   
-//                         }
-
-                        if (cell.cellPos().left < fixColumn) {
-                            action(cell);
-                        }
-
-                        inc = colspan;
-                    }
-                }
+			var fixColumn = settings.left;
+			var sum = 0;
+			for(var i=1;i<=fixColumn && sum<=fixColumn;++i) {
+				var cell = $(row).find("> *:nth-child(" + i + ")");
+				var colspan = cell.prop("colspan");
+				if (cell.cellPos().left < fixColumn) {
+					action(cell);
+				}
+				sum += colspan;
+			}
+		}
 
                 function solveRightColspan(row, action) {
                     var fixColumn = settings.right;
