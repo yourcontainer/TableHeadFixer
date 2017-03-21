@@ -261,7 +261,7 @@
 //                             return;   
 //                         }
 
-                        if (cell.cellPos().left < fixColumn) {
+                        if (cell && cell.cellPos() && cell.cellPos().left < fixColumn) {
                             action(cell);
                         }
 
