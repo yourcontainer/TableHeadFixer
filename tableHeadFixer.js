@@ -21,6 +21,7 @@
                 var settings = $.extend({}, defaults, param);
 
                 settings.table  = this;
+		console.log(settings.table); 
                 settings.parent = $(settings.table).parent();
                 setParent();
 
