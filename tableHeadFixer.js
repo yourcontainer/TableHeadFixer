@@ -254,7 +254,7 @@
 
                         var cell    = $(row).find("> *:nth-child(" + nth + ")");
                         var colspan = cell.prop("colspan");
-			console.log(cell, colspan);
+			// console.log(cell, colspan);
                         
 //                         if (colspan) {
 //                             return;   
