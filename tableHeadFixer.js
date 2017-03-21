@@ -14,7 +14,8 @@
                     foot: false,
                     left: 0,
                     right: 0,
-                    'z-index': 0
+                    'z-index': 0,
+                    setBackground: false
                 };
 
                 var settings = $.extend({}, defaults, param);
@@ -224,6 +225,9 @@
 
                 // Set fixed cells backgrounds
                 function setBackground(elements) {
+                    if(settings.setBackground === false) {
+                        return;
+                    }
                     elements.each(function (k, element) {
                         var element = $(element);
                         var parent  = $(element).parent();
