@@ -22,6 +22,7 @@
 
                 settings.table  = this;
                 settings.parent = $(settings.table).parent();
+		    
                 setParent();
 
                 if (settings.head == true)
@@ -54,7 +55,7 @@
 
                     if (settings.head) {
                         if (settings.left > 0) {
-                            var tr = table.find("thead > tr");
+                            var tr = table.find("thead tr");
 
                             tr.each(function (k, row) {
                                 solverLeftColspan(row, function (cell) {
@@ -64,7 +65,7 @@
                         }
 
                         if (settings.right > 0) {
-                            var tr = table.find("thead > tr");
+                            var tr = table.find("thead tr");
 
                             tr.each(function (k, row) {
                                 solveRightColspan(row, function (cell) {
@@ -76,7 +77,7 @@
 
                     if (settings.foot) {
                         if (settings.left > 0) {
-                            var tr = table.find("tfoot > tr");
+                            var tr = table.find("tfoot tr");
 
                             tr.each(function (k, row) {
                                 solverLeftColspan(row, function (cell) {
@@ -86,7 +87,7 @@
                         }
 
                         if (settings.right > 0) {
-                            var tr = table.find("tfoot > tr");
+                            var tr = table.find("tfoot tr");
 
                             tr.each(function (k, row) {
                                 solveRightColspan(row, function (cell) {
@@ -118,10 +119,10 @@
                         var left         = parent.scrollLeft();
 
                         if (settings.head)
-                            this.children("thead > tr > *").css("top", top);
+                            this.find("thead tr > *").css("top", top);
 
                         if (settings.foot)
-                            this.children("tfoot > tr > *").css("bottom", scrollHeight - clientHeight - top);
+                            this.find("tfoot tr > *").css("bottom", scrollHeight - clientHeight - top);
 
                         if (settings.left > 0)
                             settings.leftColumns.css("left", left);
@@ -133,9 +134,9 @@
 
                 // Set table head fixed
                 function fixHead() {
-                    var thead = $(settings.table).children("thead");
-                    var tr    = thead.children("tr");
-                    var cells = thead.children("tr > *");
+                    var thead = $(settings.table).find("thead");
+                    var tr    = thead.find("tr");
+                    var cells = thead.find("tr > *");
 
                     setBackground(cells);
                     cells.css({
@@ -145,9 +146,9 @@
 
                 // Set table foot fixed
                 function fixFoot() {
-                    var tfoot = $(settings.table).children("tfoot");
-                    var tr    = tfoot.children("tr");
-                    var cells = tfoot.children("tr > *");
+                    var tfoot = $(settings.table).find("tfoot");
+                    var tr    = tfoot.find("tr");
+                    var cells = tfoot.find("tr > *");
 
                     setBackground(cells);
                     cells.css({
@@ -163,7 +164,7 @@
 
                     settings.leftColumns = $();
 
-                    var tr = table.children("tr");
+                    var tr = table.find("tr");
                     tr.each(function (k, row) {
 
                         solverLeftColspan(row, function (cell) {
@@ -203,7 +204,7 @@
 
                     settings.rightColumns = $();
 
-                    var tr = table.children("tr");
+                    var tr = table.find("tr");
                     tr.each(function (k, row) {
                         solveRightColspan(row, function (cell) {
                             settings.rightColumns = settings.rightColumns.add(cell);
@@ -252,7 +253,7 @@
                     for (var i = 1; i <= fixColumn; i = i + inc) {
                         var nth = inc > 1 ? i - 1 : i;
 
-                        var cell    = $(row).children("> *:nth-child(" + nth + ")");
+                        var cell    = $(row).find("> *:nth-child(" + nth + ")");
                         var colspan = cell.prop("colspan");
 			// console.log(cell, colspan);
                         
@@ -275,7 +276,7 @@
                     for (var i = 1; i <= fixColumn; i = i + inc) {
                         var nth = inc > 1 ? i - 1 : i;
 
-                        var cell    = $(row).children("> *:nth-last-child(" + nth + ")");
+                        var cell    = $(row).find("> *:nth-last-child(" + nth + ")");
                         var colspan = cell.prop("colspan");
                         
 //                         if (colspan) {
